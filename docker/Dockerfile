@@ -30,12 +30,14 @@ RUN mkdir -p /scratch-etc && \
 
 FROM scratch
 
-COPY --from=assembly_container --chown=1001:1001 /sysroot /
+COPY --from=assembly_container /sysroot /
 
-WORKDIR /opt/teragrep/lsh_01
+WORKDIR  /opt/teragrep/lsh_01
 
 COPY --from=assembly_container /scratch-etc/passwd /etc/passwd
 COPY --from=assembly_container /scratch-etc/group /etc/group
+
+COPY --from=assembly_container --chown=1001:1001 /opt/teragrep/lsh_01 /opt/teragrep/lsh_01
 
 USER srv-lsh_01
 
