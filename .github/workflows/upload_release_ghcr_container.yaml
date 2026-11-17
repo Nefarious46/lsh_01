@@ -41,6 +41,9 @@ jobs:
       - name: Lowercase repository name
         run: echo "REPO_LC=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
+      - name: Check RPM dependencies
+        run: rpm -qpR rpm/*.rpm
+
       - name: 'Build Image'
         run: |
           docker buildx build --output type=docker --tag ghcr.io/${{ env.REPO_LC }}:${{ github.event.workflow_run.head_branch }} --tag ghcr.io/${{ env.REPO_LC }}:latest . -f docker/Dockerfile
