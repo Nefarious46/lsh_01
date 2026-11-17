@@ -19,4 +19,4 @@ exec /usr/lib/jvm/jre-11-openjdk/bin/java ${JAVA_OPTIONS} \
      -Dlookups.hostname.file=/config/hostname.json \
      -Dlookups.appname.file=/config/appname.json \
      -Dlog4j2.configurationFile=file:"${LOG4J_FILE}" \
-     -jar /opt/teragrep/lsh_01/share/lsh_01.jar;
+     -jar /opt/teragrep/lsh_01/lib/lsh_01.jar;

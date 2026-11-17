@@ -101,7 +101,7 @@
               </sources>
             </mapping>
             <mapping>
-              <directory>/opt/teragrep/${project.artifactId}/share</directory>
+              <directory>/opt/teragrep/${project.artifactId}/lib</directory>
               <directoryIncluded>true</directoryIncluded>
               <filemode>755</filemode>
               <dirmode>755</dirmode>
