@@ -6,6 +6,15 @@ RUN dnf install --assumeyes rpm-build java-25-openjdk-devel java-25-openjdk-jmod
 
 COPY rpm/*.rpm /rpm/
 
+RUN groupadd --gid 1001 srv-lsh_01 && \
+    useradd --uid 1001 \
+            --gid srv-lsh_01 \
+            --home-dir /opt/teragrep/lsh_01 \
+            --no-create-home \
+            --shell /sbin/nologin \
+            --comment "Service User" \
+            srv-lsh_01
+
 RUN  dnf install --assumeyes /rpm/*.rpm
 
 COPY container/microjre.pom.xml /container/
