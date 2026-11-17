@@ -71,10 +71,12 @@
           <defaultGroupname>srv-lsh_01</defaultGroupname>
           <defaultFilemode>0644</defaultFilemode>
           <defaultDirmode>0755</defaultDirmode>
+          <!--
           <keyname>${env.RPM_SIGNING_KEYNAME}</keyname>
           <keyPassphrase>
             <passphrase>${env.RPM_SIGNING_PASSPHRASE}</passphrase>
           </keyPassphrase>
+          -->
           <mappings>
             <mapping>
               <directory>/usr/lib/systemd/system</directory>
@@ -101,7 +103,7 @@
               </sources>
             </mapping>
             <mapping>
-              <directory>/opt/teragrep/${project.artifactId}/share</directory>
+              <directory>/opt/teragrep/${project.artifactId}/lib</directory>
               <directoryIncluded>true</directoryIncluded>
               <filemode>755</filemode>
               <dirmode>755</dirmode>
