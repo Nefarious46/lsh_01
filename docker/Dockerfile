@@ -2,7 +2,7 @@ FROM rockylinux/rockylinux:9-ubi-micro AS runtime_container
 
 FROM rockylinux/rockylinux:9-ubi AS assembly_container
 
-RUN dnf install --assumeyes rpm-build java-25-openjdk-devel java-25-openjdk-jmods maven
+RUN dnf install --assumeyes rpm-build java-25-openjdk-devel java-25-openjdk-jmods maven shadow-utils
 
 COPY rpm/*.rpm /rpm/
 

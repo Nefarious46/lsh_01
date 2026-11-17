@@ -121,9 +121,9 @@
           </requires>
           <preinstallScriptlet>
             <script>
+              set -e
 getent group srv-lsh_01 > /dev/null || groupadd -r srv-lsh_01;
 getent passwd srv-lsh_01 > /dev/null || useradd -r -g srv-lsh_01 -d /opt/teragrep/${project.artifactId} -s /sbin/nologin -c "Service User" srv-lsh_01;
-exit 0;
             </script>
           </preinstallScriptlet>
         </configuration>
