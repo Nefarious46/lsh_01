@@ -250,6 +250,8 @@
             <exclude>src/test/resources/properties/*</exclude>
             <!-- readme -->
             <exclude>README.adoc</exclude>
+            <!-- microcontainer -->
+            <exclude>container/microjre.pom.xml</exclude>
           </excludes>
         </configuration>
         <executions>
