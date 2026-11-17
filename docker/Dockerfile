@@ -15,7 +15,7 @@ RUN groupadd --gid 1001 srv-lsh_01 && \
             --comment "Service User" \
             srv-lsh_01
 
-RUN  dnf install --assumeyes /rpm/*.rpm
+RUN  rpm -ivh --nodeps --nosignature /rpm/*.rpm
 
 COPY container/microjre.pom.xml /container/
 
