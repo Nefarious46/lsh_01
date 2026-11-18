@@ -1,21 +1,12 @@
 FROM rockylinux/rockylinux:9-ubi-micro AS runtime_container
 
-FROM rockylinux/rockylinux:9-ubi AS assembly_container
+FROM rockylinux/rockylinux:9 AS assembly_container
 
-RUN dnf install --assumeyes rpm-build java-25-openjdk-devel java-25-openjdk-jmods maven shadow-utils
+RUN dnf install --assumeyes rpm-build java-25-openjdk-devel java-25-openjdk-jmods maven
 
 COPY rpm/*.rpm /rpm/
 
-RUN groupadd --gid 1001 srv-lsh_01 && \
-    useradd --uid 1001 \
-            --gid srv-lsh_01 \
-            --home-dir /opt/teragrep/lsh_01 \
-            --no-create-home \
-            --shell /sbin/nologin \
-            --comment "Service User" \
-            srv-lsh_01
-
-RUN  rpm -ivh --nodeps --nosignature /rpm/*.rpm
+RUN  dnf install --assumeyes /rpm/*.rpm
 
 COPY container/microjre.pom.xml /container/
 
