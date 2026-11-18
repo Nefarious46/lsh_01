@@ -67,8 +67,8 @@
           <group>Teragrep/lsh_01</group>
           <description>${project.groupId}-${project.artifactId}</description>
           <needarch>false</needarch>
-          <defaultUsername>srv-lsh_01</defaultUsername>
-          <defaultGroupname>srv-lsh_01</defaultGroupname>
+          <defaultUsername>root</defaultUsername>
+          <defaultGroupname>root</defaultGroupname>
           <defaultFilemode>0644</defaultFilemode>
           <defaultDirmode>0755</defaultDirmode>
           <keyname>${env.RPM_SIGNING_KEYNAME}</keyname>
@@ -91,8 +91,8 @@
               <directoryIncluded>true</directoryIncluded>
               <filemode>600</filemode>
               <dirmode>700</dirmode>
-              <username>srv-lsh_01</username>
-              <groupname>srv-lsh_01</groupname>
+              <username>root</username>
+              <groupname>root</groupname>
               <recurseDirectories>true</recurseDirectories>
               <sources>
                 <source>
@@ -105,8 +105,8 @@
               <directoryIncluded>true</directoryIncluded>
               <filemode>755</filemode>
               <dirmode>755</dirmode>
-              <username>srv-lsh_01</username>
-              <groupname>srv-lsh_01</groupname>
+              <username>root</username>
+              <groupname>root</groupname>
               <recurseDirectories>true</recurseDirectories>
               <sources>
                 <source>
@@ -119,13 +119,6 @@
           <requires>
             <require>java-11-openjdk-headless</require>
           </requires>
-          <preinstallScriptlet>
-            <script>
-getent group srv-lsh_01 > /dev/null || groupadd -r srv-lsh_01;
-getent passwd srv-lsh_01 > /dev/null || useradd -r -g srv-lsh_01 -d /opt/teragrep/${project.artifactId} -s /sbin/nologin -c "Service User" srv-lsh_01;
-exit 0;
-            </script>
-          </preinstallScriptlet>
         </configuration>
       </plugin>
     </plugins>
