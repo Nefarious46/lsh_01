@@ -103,8 +103,8 @@
                     <group>teragrep/LogManagementSuite</group>
                     <description>${project.groupId}-${project.artifactId}</description>
                     <needarch>true</needarch>
-                    <defaultUsername>root</defaultUsername>
-                    <defaultGroupname>root</defaultGroupname>
+                    <defaultUsername>srv-lsh_01</defaultUsername>
+                    <defaultGroupname>srv-lsh_01</defaultGroupname>
                     <defaultFilemode>0644</defaultFilemode>
                     <defaultDirmode>0755</defaultDirmode>
                     <keyname>${env.RPM_SIGNING_KEYNAME}</keyname>
@@ -125,8 +125,8 @@
                             <directoryIncluded>true</directoryIncluded>
                             <filemode>755</filemode>
                             <dirmode>755</dirmode>
-                            <username>root</username>
-                            <groupname>root</groupname>
+                            <username>srv-lsh_01</username>
+                            <groupname>srv-lsh_01</groupname>
                             <recurseDirectories>true</recurseDirectories>
                             <sources>
                                 <source>
