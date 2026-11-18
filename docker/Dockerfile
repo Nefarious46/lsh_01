@@ -1,6 +1,6 @@
 FROM rockylinux/rockylinux:9-ubi-micro AS runtime_container
 
-FROM rockylinux/rockylinux:9 AS assembly_container
+FROM rockylinux/rockylinux:9-ubi AS assembly_container
 
 RUN dnf install --assumeyes rpm-build java-25-openjdk-devel java-25-openjdk-jmods maven
 
@@ -17,6 +17,8 @@ RUN mvn --batch-mode --file microjre.pom.xml clean package
 RUN mkdir --parents /sysroot
 
 COPY --from=runtime_container / /sysroot
+
+RUN dnf --releasever 9 --setopt install_weak_deps=false --nodocs --installroot /sysroot --assumeyes install shadow-utils
 
 RUN dnf upgrade --releasever 9 --setopt install_weak_deps=false --nodocs --installroot /sysroot --assumeyes
 
