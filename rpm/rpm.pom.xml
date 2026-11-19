@@ -67,14 +67,16 @@
           <group>Teragrep/lsh_01</group>
           <description>${project.groupId}-${project.artifactId}</description>
           <needarch>false</needarch>
-          <defaultUsername>root</defaultUsername>
-          <defaultGroupname>root</defaultGroupname>
+          <defaultUsername>srv-lsh_01</defaultUsername>
+          <defaultGroupname>srv-lsh_01</defaultGroupname>
           <defaultFilemode>0644</defaultFilemode>
           <defaultDirmode>0755</defaultDirmode>
+          <!--
           <keyname>${env.RPM_SIGNING_KEYNAME}</keyname>
           <keyPassphrase>
             <passphrase>${env.RPM_SIGNING_PASSPHRASE}</passphrase>
           </keyPassphrase>
+          -->
           <mappings>
             <mapping>
               <directory>/usr/lib/systemd/system</directory>
@@ -91,12 +93,16 @@
               <directoryIncluded>true</directoryIncluded>
               <filemode>600</filemode>
               <dirmode>700</dirmode>
-              <username>root</username>
-              <groupname>root</groupname>
+              <username>srv-lsh_01</username>
+              <groupname>srv-lsh_01</groupname>
               <recurseDirectories>true</recurseDirectories>
+            </mapping>
+            <mapping>
+              <directory>/usr/lib/sysusers.d</directory>
+              <directoryIncluded>false</directoryIncluded>
               <sources>
                 <source>
-                  <location>${project.basedir}/src/main/resources/log4j2.xml</location>
+                  <location>../src/main/resources/srv-lsh_01.conf</location>
                 </source>
               </sources>
             </mapping>
@@ -105,8 +111,8 @@
               <directoryIncluded>true</directoryIncluded>
               <filemode>755</filemode>
               <dirmode>755</dirmode>
-              <username>root</username>
-              <groupname>root</groupname>
+              <username>srv-lsh_01</username>
+              <groupname>srv-lsh_01</groupname>
               <recurseDirectories>true</recurseDirectories>
               <sources>
                 <source>
@@ -116,9 +122,6 @@
               </sources>
             </mapping>
           </mappings>
-          <requires>
-            <require>java-11-openjdk-headless</require>
-          </requires>
         </configuration>
       </plugin>
     </plugins>

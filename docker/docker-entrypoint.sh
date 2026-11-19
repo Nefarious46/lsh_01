@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 for file in config.properties credentials.json hostname.json appname.json; do
   if [ ! -f "/config/${file}" ]; then
     echo "ERROR: Missing '/config/${file}', refusing to continue";
@@ -13,7 +13,7 @@ else
     LOG4J_FILE="/opt/teragrep/lsh_01/etc/log4j2.xml";
 fi;
 
-exec /usr/lib/jvm/jre-11-openjdk/bin/java ${JAVA_OPTIONS} \
+exec /opt/teragrep/lsh_01_microjre/bin/java ${JAVA_OPTIONS} \
      -Dproperties.file=/config/config.properties \
      -Dcredentials.file=/config/credentials.json \
      -Dlookups.hostname.file=/config/hostname.json \
