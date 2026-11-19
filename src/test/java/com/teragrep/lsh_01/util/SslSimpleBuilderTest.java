@@ -36,9 +36,6 @@ import java.security.Security;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.elasticsearch.mock.orig.Mockito.spy;
-import static org.elasticsearch.mock.orig.Mockito.verify;
-import static org.elasticsearch.mock.orig.Mockito.when;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.isIn;
@@ -53,7 +50,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static com.teragrep.lsh_01.util.SslSimpleBuilder.SUPPORTED_CIPHERS;
 import static com.teragrep.lsh_01.util.SslSimpleBuilder.SslClientVerifyMode;
 import static com.teragrep.lsh_01.util.SslSimpleBuilder.getDefaultCiphers;
-import static org.mockito.Matchers.eq;
 
 /**
  * Unit test for {@link SslSimpleBuilder}
@@ -421,14 +417,15 @@ class SslSimpleBuilderTest {
         sslSimpleBuilder.setClientAuthentication(SslClientVerifyMode.REQUIRED);
         assertTrue(sslSimpleBuilder.isClientAuthenticationRequired());
     }
-/*
-    FIXME: Elasticsearch had no updates since 2015. java 25 breaks these tests.
 
+    /*
+    FIXME: Elasticsearch had no updates since 2015. java 25 breaks these tests.
+    
     [ERROR] Errors:
     [ERROR]   SslSimpleBuilderTest.testClientAuthenticationUsesKeystoreWhenNoTrustStoreIsConfigured:446 » NoClassDefFound Could not initialize class org.mockito.internal.creation.jmock.ClassImposterizer$4
     [ERROR]   SslSimpleBuilderTest.testClientAuthenticationWithTrustStoreUsesTruststore:427 » ExceptionInInitializer
-
-
+    
+    
     @Test
     void testClientAuthenticationWithTrustStoreUsesTruststore() throws Exception {
         final SslSimpleBuilder jksSslBuilder = spy(createJksSslSimpleBuilder())
@@ -437,34 +434,34 @@ class SslSimpleBuilderTest {
                         TestCertificates.TRUSTSTORE_TYPE, TestCertificates.TRUSTSTORE,
                         TestCertificates.TRUSTSTORE_PASSWORD
                 );
-
+    
         final DummyTrustManagerFactorySpi factorySpi = spy(new DummyTrustManagerFactorySpi());
         final TrustManagerFactory trustManagerFactory = new DummyTrustManagerFactory(factorySpi);
-
+    
         when(jksSslBuilder.getDefaultTrustManagerFactory()).thenReturn(trustManagerFactory);
-
+    
         jksSslBuilder.build();
-
+    
         verify(factorySpi).engineInit(eq(jksSslBuilder.getTrustStore()));
     }
-
+    
     @Test
     void testClientAuthenticationUsesKeystoreWhenNoTrustStoreIsConfigured() throws Exception {
         final SslSimpleBuilder jksSslBuilder = spy(createJksSslSimpleBuilder());
         jksSslBuilder.setClientAuthentication(SslClientVerifyMode.REQUIRED);
-
+    
         final DummyTrustManagerFactorySpi factorySpi = spy(new DummyTrustManagerFactorySpi());
         final TrustManagerFactory trustManagerFactory = new DummyTrustManagerFactory(factorySpi);
-
+    
         when(jksSslBuilder.getDefaultTrustManagerFactory()).thenReturn(trustManagerFactory);
-
+    
         jksSslBuilder.build();
-
+    
         verify(factorySpi).engineInit(eq(jksSslBuilder.getKeyStore()));
     }
-
-
- */
+    
+    
+     */
     @Test
     void testResolveKeyStoreType() {
         assertEquals("PKCS12", SslSimpleBuilder.resolveKeyStoreType(null, Paths.get("dummy.p12")));
