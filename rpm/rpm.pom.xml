@@ -102,7 +102,7 @@
               <directoryIncluded>false</directoryIncluded>
               <sources>
                 <source>
-                  <location>../src/main/resources/srv-lsh_01.conf</location>
+                  <location>./src/main/resources/srv-lsh_01.conf</location>
                 </source>
               </sources>
             </mapping>
